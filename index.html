@@ -57,6 +57,20 @@
         .animation-delay-2000 { animation-delay: 2s; }
         .animation-delay-4000 { animation-delay: 4s; }
 
+        /* Auto-Scrolling Marquee */
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .animate-marquee {
+            display: flex;
+            width: max-content;
+            animation: marquee 25s linear infinite;
+        }
+        .marquee-container:hover .animate-marquee {
+            animation-play-state: paused;
+        }
+
         .glass { 
             background: var(--glass-bg); 
             border: 1px solid var(--glass-border); 
@@ -87,7 +101,7 @@
         .dark .invert-dark:hover { filter: invert(1) grayscale(0%) opacity(1); }
     </style>
 </head>
-<body class="selection:bg-blue-500/30 dark:selection:bg-orange-500/30">
+<body class="selection:bg-blue-500/30 dark:selection:bg-orange-500/30 relative">
 
     <div class="fixed inset-0 z-[-1] overflow-hidden transition-colors duration-700">
         <div class="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] rounded-full bg-blue-500/30 dark:bg-orange-500/15 blur-[100px] animate-blob"></div>
@@ -111,12 +125,13 @@
         </div>
     </nav>
 
-    <section class="min-h-screen flex items-center justify-center px-6 max-w-6xl mx-auto pt-20">
+    <section class="min-h-screen flex items-center justify-center px-6 max-w-6xl mx-auto relative pt-20">
         <div class="w-full flex flex-col md:flex-row items-center justify-between gap-12 reveal">
             <div class="md:w-1/2 text-left">
                 <h1 class="text-6xl md:text-8xl font-bold tracking-tighter mb-6 text-slate-900 dark:text-white">Hi, I'm <br/><span class="text-blue-600 dark:text-orange-500">Vishwa.</span></h1>
-                <p class="text-xl text-slate-600 dark:text-zinc-400 font-light mb-8 max-w-md leading-relaxed">
-                    Software Engineer based in Dallas. Specializing in AI Automation, FastAPI microservices, and cloud infrastructure.
+                <p class="text-xl text-slate-600 dark:text-zinc-400 font-light mb-8 flex items-center gap-2">
+                    <svg class="w-5 h-5 text-blue-500 dark:text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                    Dallas, TX | U.S. Citizen
                 </p>
             </div>
             <div class="md:w-1/2 flex justify-center md:justify-end">
@@ -128,44 +143,69 @@
                 </div>
             </div>
         </div>
+
+        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce opacity-40 pointer-events-none">
+            <svg class="w-6 h-6 text-slate-500 dark:text-zinc-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
+        </div>
     </section>
-    
+
     <section id="about" class="max-w-5xl mx-auto px-6 py-24 border-t border-slate-200 dark:border-zinc-900 reveal transition-colors">
         <div class="mb-20 text-center max-w-3xl mx-auto">
             <h2 class="text-xs uppercase tracking-[0.4em] text-blue-600 dark:text-orange-500 font-bold mb-6">About Me</h2>
             <p class="text-lg text-slate-600 dark:text-zinc-400 leading-loose">
-                I am a software engineer at Citi, driven by the intersection of high-performance cloud architecture and Generative AI. My focus is on building resilient systems that deliver measurable business impact. 
+                I am a software engineer at Citi with a focus on building resilient systems that deliver measurable business impact. 
             </p>
         </div>
 
         <h3 class="text-center text-[10px] uppercase tracking-[0.3em] text-slate-500 dark:text-zinc-600 mb-8 font-bold">Certifications</h3>
         <div class="flex flex-wrap justify-center gap-8 mb-20">
-            <div class="glass p-6 rounded-3xl flex flex-col items-center w-48 bento-item">
-                <img src= "https://images.credly.com/size/340x340/images/b9feab85-1a43-4f6c-99a5-631b88d5461b/image.png" class="h-20 mb-4" alt="AWS Certified Developer Associate">
+            <a href="https://www.credly.com/badges/36e003bd-8d5c-4be9-b8f6-141db1e921f3" target="_blank" class="glass p-6 rounded-3xl flex flex-col items-center w-48 bento-item cursor-pointer">
+                <img src="https://images.credly.com/size/340x340/images/b9feab85-1a43-4f6c-99a5-631b88d5461b/image.png" class="h-20 mb-4" alt="AWS Dev Associate">
                 <p class="text-[10px] text-center font-bold text-slate-500 dark:text-zinc-400 uppercase tracking-widest">AWS Certified<br><span class="text-blue-500 dark:text-orange-400">Developer</span></p>
-            </div>
-            <div class="glass p-6 rounded-3xl flex flex-col items-center w-48 bento-item">
+            </a>
+            <a href="https://www.credly.com/badges/21dfdcc9-6e82-42a4-943a-1ad5632b729c" target="_blank" class="glass p-6 rounded-3xl flex flex-col items-center w-48 bento-item cursor-pointer">
                 <img src="https://images.credly.com/images/00634f82-b07f-4bbd-a6bb-53de397fc3a6/image.png" class="h-20 mb-4" alt="AWS Cloud Practitioner">
                 <p class="text-[10px] text-center font-bold text-slate-500 dark:text-zinc-400 uppercase tracking-widest">AWS Certified<br><span class="text-blue-500 dark:text-orange-400">Practitioner</span></p>
-            </div>
+            </a>
         </div>
 
         <h3 class="text-center text-[10px] uppercase tracking-[0.3em] text-slate-500 dark:text-zinc-600 mb-8 font-bold">Technical Arsenal</h3>
-        <div class="flex flex-wrap justify-center gap-8 glass p-10 rounded-[2.5rem]">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" class="w-12 h-12 skill-icon" title="Python">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" class="w-12 h-12 skill-icon" title="Java">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" class="w-12 h-12 skill-icon" title="C++">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" class="w-12 h-12 skill-icon" title="JavaScript">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" class="w-12 h-12 skill-icon" title="TypeScript">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg" class="w-12 h-12 skill-icon" title="FastAPI">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg" class="w-12 h-12 skill-icon" title="SpringBoot">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angularjs/angularjs-original.svg" class="w-12 h-12 skill-icon" title="Angular">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" class="w-12 h-12 skill-icon" title="React">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-plain-wordmark.svg" class="w-12 h-12 skill-icon invert-dark" title="AWS">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" class="w-12 h-12 skill-icon" title="Docker">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" class="w-12 h-12 skill-icon" title="MongoDB">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" class="w-12 h-12 skill-icon" title="PostgreSQL">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg" class="w-12 h-12 skill-icon" title="TensorFlow">
+        
+        <div class="overflow-hidden glass py-10 rounded-[2.5rem] relative marquee-container">
+            <div class="absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-[rgba(255,255,255,0.8)] dark:from-[rgba(255,255,255,0.03)] to-transparent z-10 pointer-events-none transition-colors"></div>
+            <div class="absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-[rgba(255,255,255,0.8)] dark:from-[rgba(255,255,255,0.03)] to-transparent z-10 pointer-events-none transition-colors"></div>
+            
+            <div class="animate-marquee gap-16 px-8 items-center">
+                <div class="relative group flex justify-center"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" class="w-12 h-12 skill-icon"><span class="absolute -bottom-8 opacity-0 group-hover:opacity-100 transition-opacity text-[10px] font-bold tracking-widest text-slate-500 dark:text-zinc-400 uppercase">Python</span></div>
+                <div class="relative group flex justify-center"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" class="w-12 h-12 skill-icon"><span class="absolute -bottom-8 opacity-0 group-hover:opacity-100 transition-opacity text-[10px] font-bold tracking-widest text-slate-500 dark:text-zinc-400 uppercase">Java</span></div>
+                <div class="relative group flex justify-center"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" class="w-12 h-12 skill-icon"><span class="absolute -bottom-8 opacity-0 group-hover:opacity-100 transition-opacity text-[10px] font-bold tracking-widest text-slate-500 dark:text-zinc-400 uppercase">C++</span></div>
+                <div class="relative group flex justify-center"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" class="w-12 h-12 skill-icon"><span class="absolute -bottom-8 opacity-0 group-hover:opacity-100 transition-opacity text-[10px] font-bold tracking-widest text-slate-500 dark:text-zinc-400 uppercase">JavaScript</span></div>
+                <div class="relative group flex justify-center"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" class="w-12 h-12 skill-icon"><span class="absolute -bottom-8 opacity-0 group-hover:opacity-100 transition-opacity text-[10px] font-bold tracking-widest text-slate-500 dark:text-zinc-400 uppercase">TypeScript</span></div>
+                <div class="relative group flex justify-center"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg" class="w-12 h-12 skill-icon"><span class="absolute -bottom-8 opacity-0 group-hover:opacity-100 transition-opacity text-[10px] font-bold tracking-widest text-slate-500 dark:text-zinc-400 uppercase">FastAPI</span></div>
+                <div class="relative group flex justify-center"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg" class="w-12 h-12 skill-icon"><span class="absolute -bottom-8 opacity-0 group-hover:opacity-100 transition-opacity text-[10px] font-bold tracking-widest text-slate-500 dark:text-zinc-400 uppercase">Spring</span></div>
+                <div class="relative group flex justify-center"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angularjs/angularjs-original.svg" class="w-12 h-12 skill-icon"><span class="absolute -bottom-8 opacity-0 group-hover:opacity-100 transition-opacity text-[10px] font-bold tracking-widest text-slate-500 dark:text-zinc-400 uppercase">Angular</span></div>
+                <div class="relative group flex justify-center"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" class="w-12 h-12 skill-icon"><span class="absolute -bottom-8 opacity-0 group-hover:opacity-100 transition-opacity text-[10px] font-bold tracking-widest text-slate-500 dark:text-zinc-400 uppercase">React</span></div>
+                <div class="relative group flex justify-center"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-plain-wordmark.svg" class="w-12 h-12 skill-icon invert-dark"><span class="absolute -bottom-8 opacity-0 group-hover:opacity-100 transition-opacity text-[10px] font-bold tracking-widest text-slate-500 dark:text-zinc-400 uppercase">AWS</span></div>
+                <div class="relative group flex justify-center"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" class="w-12 h-12 skill-icon"><span class="absolute -bottom-8 opacity-0 group-hover:opacity-100 transition-opacity text-[10px] font-bold tracking-widest text-slate-500 dark:text-zinc-400 uppercase">Docker</span></div>
+                <div class="relative group flex justify-center"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" class="w-12 h-12 skill-icon"><span class="absolute -bottom-8 opacity-0 group-hover:opacity-100 transition-opacity text-[10px] font-bold tracking-widest text-slate-500 dark:text-zinc-400 uppercase">MongoDB</span></div>
+                <div class="relative group flex justify-center"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" class="w-12 h-12 skill-icon"><span class="absolute -bottom-8 opacity-0 group-hover:opacity-100 transition-opacity text-[10px] font-bold tracking-widest text-slate-500 dark:text-zinc-400 uppercase">PostgreSQL</span></div>
+                <div class="relative group flex justify-center"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg" class="w-12 h-12 skill-icon"><span class="absolute -bottom-8 opacity-0 group-hover:opacity-100 transition-opacity text-[10px] font-bold tracking-widest text-slate-500 dark:text-zinc-400 uppercase">TensorFlow</span></div>
+
+                <div class="relative group flex justify-center"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" class="w-12 h-12 skill-icon"><span class="absolute -bottom-8 opacity-0 group-hover:opacity-100 transition-opacity text-[10px] font-bold tracking-widest text-slate-500 dark:text-zinc-400 uppercase">Python</span></div>
+                <div class="relative group flex justify-center"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" class="w-12 h-12 skill-icon"><span class="absolute -bottom-8 opacity-0 group-hover:opacity-100 transition-opacity text-[10px] font-bold tracking-widest text-slate-500 dark:text-zinc-400 uppercase">Java</span></div>
+                <div class="relative group flex justify-center"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" class="w-12 h-12 skill-icon"><span class="absolute -bottom-8 opacity-0 group-hover:opacity-100 transition-opacity text-[10px] font-bold tracking-widest text-slate-500 dark:text-zinc-400 uppercase">C++</span></div>
+                <div class="relative group flex justify-center"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" class="w-12 h-12 skill-icon"><span class="absolute -bottom-8 opacity-0 group-hover:opacity-100 transition-opacity text-[10px] font-bold tracking-widest text-slate-500 dark:text-zinc-400 uppercase">JavaScript</span></div>
+                <div class="relative group flex justify-center"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" class="w-12 h-12 skill-icon"><span class="absolute -bottom-8 opacity-0 group-hover:opacity-100 transition-opacity text-[10px] font-bold tracking-widest text-slate-500 dark:text-zinc-400 uppercase">TypeScript</span></div>
+                <div class="relative group flex justify-center"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg" class="w-12 h-12 skill-icon"><span class="absolute -bottom-8 opacity-0 group-hover:opacity-100 transition-opacity text-[10px] font-bold tracking-widest text-slate-500 dark:text-zinc-400 uppercase">FastAPI</span></div>
+                <div class="relative group flex justify-center"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg" class="w-12 h-12 skill-icon"><span class="absolute -bottom-8 opacity-0 group-hover:opacity-100 transition-opacity text-[10px] font-bold tracking-widest text-slate-500 dark:text-zinc-400 uppercase">Spring</span></div>
+                <div class="relative group flex justify-center"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angularjs/angularjs-original.svg" class="w-12 h-12 skill-icon"><span class="absolute -bottom-8 opacity-0 group-hover:opacity-100 transition-opacity text-[10px] font-bold tracking-widest text-slate-500 dark:text-zinc-400 uppercase">Angular</span></div>
+                <div class="relative group flex justify-center"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" class="w-12 h-12 skill-icon"><span class="absolute -bottom-8 opacity-0 group-hover:opacity-100 transition-opacity text-[10px] font-bold tracking-widest text-slate-500 dark:text-zinc-400 uppercase">React</span></div>
+                <div class="relative group flex justify-center"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-plain-wordmark.svg" class="w-12 h-12 skill-icon invert-dark"><span class="absolute -bottom-8 opacity-0 group-hover:opacity-100 transition-opacity text-[10px] font-bold tracking-widest text-slate-500 dark:text-zinc-400 uppercase">AWS</span></div>
+                <div class="relative group flex justify-center"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" class="w-12 h-12 skill-icon"><span class="absolute -bottom-8 opacity-0 group-hover:opacity-100 transition-opacity text-[10px] font-bold tracking-widest text-slate-500 dark:text-zinc-400 uppercase">Docker</span></div>
+                <div class="relative group flex justify-center"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" class="w-12 h-12 skill-icon"><span class="absolute -bottom-8 opacity-0 group-hover:opacity-100 transition-opacity text-[10px] font-bold tracking-widest text-slate-500 dark:text-zinc-400 uppercase">MongoDB</span></div>
+                <div class="relative group flex justify-center"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" class="w-12 h-12 skill-icon"><span class="absolute -bottom-8 opacity-0 group-hover:opacity-100 transition-opacity text-[10px] font-bold tracking-widest text-slate-500 dark:text-zinc-400 uppercase">PostgreSQL</span></div>
+                <div class="relative group flex justify-center"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg" class="w-12 h-12 skill-icon"><span class="absolute -bottom-8 opacity-0 group-hover:opacity-100 transition-opacity text-[10px] font-bold tracking-widest text-slate-500 dark:text-zinc-400 uppercase">TensorFlow</span></div>
+            </div>
         </div>
     </section>
 
@@ -207,7 +247,7 @@
                 </div>
                 <div class="absolute left-1/2 -translate-x-1/2 timeline-dot !border-slate-400 dark:!border-zinc-500 shadow-none hidden md:block z-10"></div>
                 <div class="md:w-1/2 md:pl-16 text-center md:text-left order-1 md:order-2 flex flex-col items-center md:items-start">
-                    <span class="text-slate-500 dark:text-zinc-500 text-xs font-bold font-mono">Aug 2023 — Feb 2024</span>
+                    <span class="text-slate-500 dark:text-zinc-500 text-xs font-bold font-mono">Sep 2023 — Feb 2024</span>
                     <h3 class="text-2xl font-bold text-slate-800 dark:text-zinc-300 mt-1">Software Developer</h3>
                     <p class="text-slate-500 dark:text-zinc-500 text-sm">Sahanav Technologies</p>
                 </div>
@@ -227,7 +267,7 @@
                     <div class="glass p-8 rounded-3xl bento-item">
                         <ul class="text-sm text-slate-600 dark:text-zinc-400 space-y-3">
                             <li>• Developed Angular/Spring utilities for JSON parsing.</li>
-                            <li>• Created 6 RESTful APIs, boosting productivity by 30%.</li>
+                            <li>• Created RESTful APIs, boosting productivity by 30%.</li>
                         </ul>
                     </div>
                 </div>
@@ -238,7 +278,7 @@
                     <div class="glass p-8 rounded-3xl bento-item border-emerald-500/20">
                         <span class="text-[10px] text-emerald-600 dark:text-emerald-500 font-bold uppercase tracking-widest mb-2 block">Cum Laude</span>
                         <p class="text-sm text-slate-600 dark:text-zinc-400">
-                            Minor in Engineering Innovation. Heavy coursework in Data Structures, NLP, and Enterprise Architecture.
+                            B.S. in Computer Science, Minor in Engineering Innovation. Coursework in Data Structures, NLP, and Enterprise Architecture.
                         </p>
                     </div>
                 </div>
@@ -375,6 +415,7 @@
             status.innerText = "SENDING...";
 
             try {
+                // UPDATE THIS URL TO YOUR AWS API GATEWAY ENDPOINT
                 const response = await fetch('http://localhost:8000/send-email', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
@@ -383,12 +424,12 @@
                 
                 if (response.ok) {
                     status.style.color = "#10b981";
-                    status.innerText = "SUCCESS! I'LL GET BACK TO YOU SOON.";
+                    status.innerText = "Success! Will get back to you soon.";
                     e.target.reset();
                 } else { throw new Error(); }
             } catch (err) {
                 status.style.color = "#ef4444";
-                status.innerText = "ERROR CONNECTING TO API. PLEASE USE LINKEDIN INSTEAD.";
+                status.innerText = "Error. Please use LinkedIn instead.";
             }
         });
     </script>
