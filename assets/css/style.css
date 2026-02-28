@@ -81,3 +81,6 @@ body {
 .skill-icon:hover { filter: grayscale(0%) opacity(1); transform: scale(1.15); }
 .dark .invert-dark { filter: invert(1) grayscale(100%) opacity(0.7); }
 .dark .invert-dark:hover { filter: invert(1) grayscale(0%) opacity(1); }
+
+.pb-safe { padding-bottom: max(0.75rem, env(safe-area-inset-bottom)); }
+.pt-safe { padding-top: max(0.75rem, env(safe-area-inset-top)); }

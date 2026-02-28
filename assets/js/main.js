@@ -99,8 +99,13 @@ let isChatOpen = false;
 function toggleChat() {
     isChatOpen = !isChatOpen;
     
+    // Prevent background scrolling on mobile when chat is open
+    if (window.innerWidth < 640) {
+        document.body.style.overflow = isChatOpen ? 'hidden' : '';
+    }
+    
     if (isChatOpen) {
-        chatWindow.classList.remove('opacity-0', 'scale-90', 'pointer-events-none', 'translate-y-5');
+        chatWindow.classList.remove('opacity-0', 'scale-95', 'pointer-events-none', 'translate-y-10');
         chatWindow.classList.add('opacity-100', 'scale-100', 'pointer-events-auto', 'translate-y-0');
         
         iconOpen.classList.replace('scale-100', 'scale-50');
@@ -111,10 +116,13 @@ function toggleChat() {
         iconClose.classList.replace('opacity-0', 'opacity-100');
         iconClose.classList.replace('rotate-[-90deg]', 'rotate-0');
 
-        setTimeout(() => chatInput.focus(), 300);
+        // On mobile, don't auto-focus, as it immediately pops the keyboard and can feel jarring
+        if (window.innerWidth >= 640) {
+            setTimeout(() => chatInput.focus(), 300);
+        }
     } else {
         chatWindow.classList.remove('opacity-100', 'scale-100', 'pointer-events-auto', 'translate-y-0');
-        chatWindow.classList.add('opacity-0', 'scale-90', 'pointer-events-none', 'translate-y-5');
+        chatWindow.classList.add('opacity-0', 'scale-95', 'pointer-events-none', 'translate-y-10');
 
         iconOpen.classList.replace('scale-50', 'scale-100');
         iconOpen.classList.replace('opacity-0', 'opacity-100');
