@@ -4,106 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vishwa Krishnan | Software Engineer</title>
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/scrollreveal"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
     
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {}
-            }
-        }
-    </script>
-
-    <style>
-        :root {
-            --bg-color: #f8fafc; 
-            --text-main: #0f172a;
-            --glass-bg: rgba(255, 255, 255, 0.8);
-            --glass-border: rgba(0, 0, 0, 0.08);
-            --glass-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.1);
-            --nav-link: #64748b;
-            --nav-link-hover: #0f172a;
-        }
-
-        .dark {
-            --bg-color: #030303; 
-            --text-main: #fafafa;
-            --glass-bg: rgba(255, 255, 255, 0.03);
-            --glass-border: rgba(255, 255, 255, 0.08);
-            --glass-shadow: 0 25px 50px -12px rgba(249, 115, 22, 0.15);
-            --nav-link: #71717a;
-            --nav-link-hover: #ffffff;
-        }
-
-        body { 
-            font-family: 'Inter', sans-serif; 
-            background-color: var(--bg-color); 
-            color: var(--text-main); 
-            scroll-behavior: smooth; 
-            overflow-x: hidden;
-            transition: background-color 0.4s ease, color 0.4s ease;
-        }
-        
-        @keyframes blob {
-            0% { transform: translate(0px, 0px) scale(1); }
-            33% { transform: translate(60px, -120px) scale(1.2); }
-            66% { transform: translate(-40px, 60px) scale(0.8); }
-            100% { transform: translate(0px, 0px) scale(1); }
-        }
-        .animate-blob { animation: blob 8s infinite alternate ease-in-out; }
-        .animation-delay-2000 { animation-delay: 2s; }
-        .animation-delay-4000 { animation-delay: 4s; }
-
-        /* Auto-Scrolling Marquee */
-        @keyframes marquee {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-        }
-        .animate-marquee {
-            display: flex;
-            width: max-content;
-            animation: marquee 25s linear infinite;
-        }
-        
-        /* FIX: Only pause on hover if the device has a mouse pointer */
-        @media (hover: hover) and (pointer: fine) {
-            .marquee-container:hover .animate-marquee {
-                animation-play-state: paused;
-            }
-        }
-
-        .glass { 
-            background: var(--glass-bg); 
-            border: 1px solid var(--glass-border); 
-            backdrop-filter: blur(16px); 
-            box-shadow: var(--glass-shadow);
-            transition: all 0.4s ease;
-        }
-        
-        .bento-item { transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
-        .bento-item:hover { transform: translateY(-8px); }
-        .dark .bento-item:hover { border-color: #f97316; box-shadow: 0 20px 40px -15px rgba(249, 115, 22, 0.3); } 
-        :not(.dark) .bento-item:hover { border-color: #2563eb; box-shadow: 0 20px 40px -15px rgba(37, 99, 235, 0.2); }
-        
-        .nav-link { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--nav-link); transition: 0.3s; cursor: pointer; display: flex; align-items: center; white-space: nowrap; }
-        .nav-link:hover { color: var(--nav-link-hover); }
-        
-        .timeline-line { width: 2px; }
-        .dark .timeline-line { background: linear-gradient(to bottom, transparent, #f97316, #f97316, transparent); }
-        :not(.dark) .timeline-line { background: linear-gradient(to bottom, transparent, #2563eb, #2563eb, transparent); }
-
-        .timeline-dot { width: 16px; height: 16px; border-radius: 50%; z-index: 10; transition: all 0.4s ease; }
-        .dark .timeline-dot { background: #030303; border: 4px solid #f97316; box-shadow: 0 0 10px rgba(249, 115, 22, 0.5); }
-        :not(.dark) .timeline-dot { background: #f8fafc; border: 4px solid #2563eb; box-shadow: 0 0 10px rgba(37, 99, 235, 0.3); }
-        
-        .skill-icon { filter: grayscale(100%) opacity(0.7); transition: all 0.3s ease; }
-        .skill-icon:hover { filter: grayscale(0%) opacity(1); transform: scale(1.15); }
-        .dark .invert-dark { filter: invert(1) grayscale(100%) opacity(0.7); }
-        .dark .invert-dark:hover { filter: invert(1) grayscale(0%) opacity(1); }
-    </style>
+    <script src="assets/js/tailwind-config.js"></script>
+    <link href="assets/css/style.css" rel="stylesheet">
 </head>
 <body class="selection:bg-blue-500/30 dark:selection:bg-orange-500/30 relative">
 
@@ -141,20 +48,15 @@
             <div class="md:w-1/2 flex justify-center md:justify-end pb-20 md:pb-0">
                 <div class="p-2 rounded-[3rem] transition-all duration-500 w-64 h-64 md:w-80 md:h-80 relative group cursor-pointer hover:-translate-y-4 hover:scale-105">
                     <div class="absolute inset-0 bg-blue-500/20 dark:bg-orange-500/30 blur-[50px] rounded-full -z-10 transition-colors group-hover:bg-blue-500/40 dark:group-hover:bg-orange-500/50"></div>
-                    
                     <div class="relative w-full h-full rounded-[2.5rem] overflow-hidden bg-black shadow-2xl shadow-blue-500/20 dark:shadow-orange-500/20">
                         <div class="absolute inset-0 z-20 pointer-events-none bg-gradient-to-tr from-white/50 via-white/5 to-transparent dark:from-white/20 dark:via-transparent dark:to-transparent mix-blend-overlay"></div>
-                        
                         <div class="absolute top-0 left-0 w-full h-1/2 bg-gradient-to-b from-white/40 to-transparent dark:from-white/20 z-20 pointer-events-none rounded-t-[2.5rem]"></div>
-                        
                         <div class="absolute inset-0 z-20 pointer-events-none rounded-[2.5rem] border-[2px] border-white/60 dark:border-white/30 shadow-[inset_0_4px_20px_rgba(255,255,255,0.3)] dark:shadow-[inset_0_4px_20px_rgba(255,255,255,0.1)]"></div>
-                        
                         <img src="references/Vishwa_Krishnan_Picture.png" alt="Vishwa Krishnan" class="w-full h-full object-cover relative z-10 transition duration-700 group-hover:scale-105">
                     </div>
                 </div>
             </div>
         </div>
-
         <div class="absolute bottom-24 md:bottom-10 left-1/2 -translate-x-1/2 animate-bounce opacity-40 pointer-events-none">
             <svg class="w-6 h-6 text-slate-500 dark:text-zinc-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
         </div>
@@ -181,11 +83,9 @@
         </div>
 
         <h3 class="text-center text-[10px] uppercase tracking-[0.3em] text-slate-500 dark:text-zinc-600 mb-8 font-bold">Technical Arsenal</h3>
-        
         <div class="overflow-hidden glass py-10 rounded-[2.5rem] relative marquee-container">
             <div class="absolute inset-y-0 left-0 w-12 md:w-16 bg-gradient-to-r from-[rgba(255,255,255,0.8)] dark:from-[rgba(255,255,255,0.03)] to-transparent z-10 pointer-events-none transition-colors"></div>
             <div class="absolute inset-y-0 right-0 w-12 md:w-16 bg-gradient-to-l from-[rgba(255,255,255,0.8)] dark:from-[rgba(255,255,255,0.03)] to-transparent z-10 pointer-events-none transition-colors"></div>
-            
             <div class="animate-marquee gap-12 md:gap-16 px-8 items-center">
                 <div class="relative group flex justify-center"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" class="w-10 h-10 md:w-12 h-12 skill-icon"><span class="absolute -bottom-8 opacity-0 group-hover:opacity-100 transition-opacity text-[10px] font-bold tracking-widest text-slate-500 dark:text-zinc-400 uppercase">Python</span></div>
                 <div class="relative group flex justify-center"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" class="w-10 h-10 md:w-12 h-12 skill-icon"><span class="absolute -bottom-8 opacity-0 group-hover:opacity-100 transition-opacity text-[10px] font-bold tracking-widest text-slate-500 dark:text-zinc-400 uppercase">Java</span></div>
@@ -222,7 +122,6 @@
 
     <section id="timeline" class="max-w-5xl mx-auto px-6 py-24 border-t border-slate-200 dark:border-zinc-900 overflow-hidden transition-colors">
         <h2 class="text-xs uppercase tracking-[0.4em] text-blue-600 dark:text-orange-500 font-bold mb-24 text-center">Journey</h2>
-        
         <div class="relative max-w-4xl mx-auto">
             <div class="absolute left-1/2 -translate-x-1/2 h-full timeline-line hidden md:block"></div>
             
@@ -307,7 +206,6 @@
     <section id="projects" class="max-w-6xl mx-auto px-6 py-24 border-t border-slate-200 dark:border-zinc-900 reveal transition-colors">
         <h2 class="text-xs uppercase tracking-[0.4em] text-blue-600 dark:text-orange-500 font-bold mb-12 text-center">Deployed Projects</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            
             <div class="glass p-8 rounded-[2rem] bento-item flex flex-col justify-between">
                 <div>
                     <h3 class="text-2xl font-bold mb-2 text-slate-900 dark:text-white">MAISTRO AI DJ</h3>
@@ -364,7 +262,6 @@
                     <span class="text-[10px] font-mono border border-slate-300 dark:border-white/10 px-2 py-1 rounded text-slate-500 dark:text-zinc-300">Qt / SFML</span>
                 </div>
             </div>
-
         </div>
     </section>
 
@@ -376,11 +273,20 @@
             <p class="text-slate-600 dark:text-zinc-400 mb-8 text-sm relative z-10">Have a question or want to work together? Send a direct email to my inbox.</p>
             
             <form id="contact-form" class="space-y-4 relative z-10 text-left">
+                <input type="text" id="bot-field" style="display: none;" tabindex="-1" autocomplete="off">
                 <input type="email" id="user-email" placeholder="Your Email Address" class="w-full p-4 glass rounded-xl outline-none border border-slate-300 dark:border-white/5 focus:border-blue-500 dark:focus:border-orange-500 transition text-sm text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-zinc-500 bg-transparent" required>
+                <input type="text" id="user-subject" placeholder="Subject" class="w-full p-4 glass rounded-xl outline-none border border-slate-300 dark:border-white/5 focus:border-blue-500 dark:focus:border-orange-500 transition text-sm text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-zinc-500 bg-transparent" required>
                 <textarea id="user-message" placeholder="What's on your mind?" rows="4" class="w-full p-4 glass rounded-xl outline-none border border-slate-300 dark:border-white/5 focus:border-blue-500 dark:focus:border-orange-500 transition text-sm text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-zinc-500 bg-transparent" required></textarea>
                 <button type="submit" class="w-full py-4 bg-blue-600 hover:bg-blue-700 dark:bg-orange-600 dark:hover:bg-orange-500 text-white font-bold rounded-xl transition shadow-lg shadow-blue-500/25 dark:shadow-orange-500/25">Send Message</button>
             </form>
             <p id="form-status" class="mt-4 text-xs font-mono font-bold tracking-widest"></p>
+
+            <div class="mt-6 text-center text-sm text-slate-500 dark:text-zinc-400 relative z-10">
+                Need to send an attachment or prefer your own client? <br>
+                <a id="direct-email-link" class="text-blue-500 dark:text-orange-400 font-bold hover:underline cursor-pointer">
+                    Email me directly
+                </a>
+            </div>
         </div>
     </section>
 
@@ -388,69 +294,40 @@
         <p class="text-[10px] text-slate-500 dark:text-zinc-600 tracking-[0.4em] uppercase">Vishwa Krishnan • Dallas, TX • 2026</p>
     </footer>
 
-    <script>
-        const themeToggleBtn = document.getElementById('theme-toggle');
-        const htmlElement = document.documentElement;
+    <div class="fixed bottom-6 right-6 z-[100]">
+        
+        <div id="ai-chat-window" class="absolute bottom-20 right-0 w-[calc(100vw-3rem)] sm:w-[320px] h-[50vh] sm:h-[400px] glass rounded-2xl flex flex-col overflow-hidden shadow-2xl transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] origin-bottom-right opacity-0 scale-90 pointer-events-none translate-y-5">
+            
+            <div class="bg-blue-600/90 dark:bg-orange-600/90 backdrop-blur-md p-3 flex justify-between items-center text-white shrink-0 border-b border-white/10">
+                <div>
+                    <h3 class="font-bold text-sm">Vishwa's AI Assistant</h3>
+                    <p class="text-[10px] opacity-90">Powered by Gemini</p>
+                </div>
+                <button id="close-chat" class="hover:bg-white/20 p-1.5 rounded transition-colors flex items-center justify-center">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
+            </div>
+            
+            <div id="chat-messages" class="flex-1 p-4 overflow-y-auto flex flex-col gap-3 text-sm bg-transparent">
+                <div class="glass p-3 rounded-xl rounded-tl-none shadow-sm text-slate-800 dark:text-zinc-200 w-[85%]">
+                    Hi! I'm an AI trained on Vishwa's resume and projects. Ask me anything about his experience at Citi, his tech stack, or his education!
+                </div>
+            </div>
 
-        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-            htmlElement.classList.add('dark');
-        } else {
-            htmlElement.classList.remove('dark');
-        }
+            <form id="chat-form-ai" class="p-3 bg-white/30 dark:bg-black/30 backdrop-blur-md border-t border-slate-200 dark:border-white/10 flex gap-2 shrink-0">
+                <input type="text" id="chat-input" placeholder="Ask a question..." class="flex-1 bg-white/50 dark:bg-white/5 border border-white/20 dark:border-white/10 focus:border-blue-500/50 dark:focus:border-orange-500/50 outline-none text-sm text-slate-800 dark:text-white placeholder-slate-500 dark:placeholder-zinc-400 px-4 py-2 rounded-full transition-colors" required autocomplete="off">
+                <button type="submit" class="bg-blue-600 dark:bg-orange-600 text-white w-9 h-9 rounded-full flex items-center justify-center hover:scale-105 active:scale-95 transition-transform shrink-0 shadow-md">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path></svg>
+                </button>
+            </form>
+        </div>
+        
+        <button id="ai-chat-toggle" class="w-14 h-14 bg-blue-600 dark:bg-orange-600 rounded-full shadow-lg shadow-blue-500/30 dark:shadow-orange-500/30 flex items-center justify-center text-white hover:scale-110 active:scale-95 transition-all duration-300 relative group">
+            <svg id="chat-icon-open" class="w-6 h-6 absolute transition-all duration-300 scale-100 opacity-100 rotate-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"></path></svg>
+            <svg id="chat-icon-close" class="w-6 h-6 absolute transition-all duration-300 scale-50 opacity-0 rotate-[-90deg]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
+    </div>
 
-        themeToggleBtn.addEventListener('click', () => {
-            htmlElement.classList.toggle('dark');
-            if (htmlElement.classList.contains('dark')) {
-                localStorage.theme = 'dark';
-            } else {
-                localStorage.theme = 'light';
-            }
-        });
-
-        ScrollReveal().reveal('.reveal', { 
-            distance: '20px',    
-            origin: 'bottom', 
-            duration: 600,       
-            interval: 100,       
-            viewFactor: 0.1,     
-            delay: 0             
-        });
-
-        document.getElementById('contact-form').addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const status = document.getElementById('form-status');
-            const email = document.getElementById('user-email').value;
-            const message = document.getElementById('user-message').value;
-
-            status.style.color = "#94a3b8";
-            status.innerText = "SENDING...";
-
-            try {
-                // REPLACE THIS URL WITH YOUR DEPLOYED AWS API GATEWAY ENDPOINT
-                const awsApiUrl = 'https://your-api-id.execute-api.us-east-1.amazonaws.com/prod/send-email';
-                
-                const response = await fetch(awsApiUrl, {
-                    method: 'POST',
-                    headers: { 
-                        'Content-Type': 'application/json',
-                        'Accept': 'application/json'
-                    },
-                    body: JSON.stringify({ email, message })
-                });
-                
-                if (response.ok) {
-                    status.style.color = "#10b981";
-                    status.innerText = "Success! Will get back to you soon.";
-                    e.target.reset();
-                } else { 
-                    throw new Error('Network response was not ok'); 
-                }
-            } catch (err) {
-                status.style.color = "#ef4444";
-                status.innerText = "Error. Please use LinkedIn instead.";
-                console.error("Fetch error:", err);
-            }
-        });
-    </script>
+    <script defer src="assets/js/main.js"></script>
 </body>
 </html>
