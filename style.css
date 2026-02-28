@@ -1,3 +1,8 @@
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 100px; /* Prevents sections from hugging the very top of the screen */
+}
+
 :root {
     --bg-color: #f8fafc; 
     --text-main: #0f172a;
@@ -82,5 +87,45 @@ body {
 .dark .invert-dark { filter: invert(1) grayscale(100%) opacity(0.7); }
 .dark .invert-dark:hover { filter: invert(1) grayscale(0%) opacity(1); }
 
+/* Custom utility classes to handle iOS safe areas */
 .pb-safe { padding-bottom: max(0.75rem, env(safe-area-inset-bottom)); }
 .pt-safe { padding-top: max(0.75rem, env(safe-area-inset-top)); }
+
+/* Customizing Quill Toolbar to match Dark/Light modes */
+.dark .ql-toolbar.ql-snow { border-color: rgba(255,255,255,0.05); }
+.dark .ql-toolbar.ql-snow .ql-stroke { stroke: #fff; }
+.dark .ql-toolbar.ql-snow .ql-fill { fill: #fff; }
+
+/* --- QUILL EDITOR OVERRIDES (GLASSMORPHISM) --- */
+.ql-toolbar.ql-snow, .ql-container.ql-snow {
+    border: none !important;
+    font-family: 'Inter', sans-serif;
+}
+.ql-toolbar.ql-snow {
+    border-bottom: 1px solid var(--glass-border) !important;
+    padding: 12px 16px !important;
+    background: transparent;
+    
+    /* NEW: Pushes the toolbar buttons to the right */
+    display: flex !important;
+    justify-content: flex-end !important;
+}
+.ql-editor {
+    font-family: 'Inter', sans-serif;
+    padding: 16px !important; /* Matches Tailwind p-4 */
+}
+.ql-editor.ql-blank::before {
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    color: #94a3b8; /* Tailwind slate-400 */
+    left: 16px !important;
+}
+.dark .ql-editor.ql-blank::before {
+    color: #a1a1aa; /* Tailwind zinc-400 */
+}
+.dark .ql-toolbar.ql-snow .ql-stroke {
+    stroke: #a1a1aa;
+}
+.dark .ql-toolbar.ql-snow .ql-fill {
+    fill: #a1a1aa;
+}
