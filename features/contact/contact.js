@@ -39,7 +39,7 @@ document.getElementById('contact-form').addEventListener('submit', async (e) => 
     status.innerText = "SENDING...";
 
     try {
-        const awsApiUrl = 'https://your-api-id.execute-api.us-east-1.amazonaws.com/prod/send-email';
+        const awsApiUrl = 'https://x4wzgffrfd.execute-api.us-east-1.amazonaws.com/prod/send-email';
         
         const response = await fetch(awsApiUrl, {
             method: 'POST',

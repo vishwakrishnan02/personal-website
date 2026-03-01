@@ -56,7 +56,7 @@ chatFormAI.addEventListener('submit', async (e) => {
     const loadingId = appendMessage('Thinking...', 'ai', true);
 
     try {
-        const response = await fetch('https://your-api-id.execute-api.us-east-1.amazonaws.com/prod/ask-ai', {
+        const response = await fetch('https://x4wzgffrfd.execute-api.us-east-1.amazonaws.com/prod/ask-ai', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ question: message })
